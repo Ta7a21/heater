@@ -1,6 +1,7 @@
 #include "AC_Controller.h"
 #include "DIO.h"
 #include "PollerTimer.h"
+#include "PWMTimer.h"
 #include "SPI.h"
 #include "TC72.h"
 #include "utils.h"
@@ -19,19 +20,26 @@ int main(void)
 	TC72_Init();
 
 	StartTimer();
+	StartPWM();
 	EnableTimerInterrupt();
 	SetPollingTime(500);
 	StartPolling();
 
 	while (1)
 	{
-		StartHeater();
 	}
 }
 
 void TIM2_IRQHandler(void)
 {
 	TIM2->SR &= ~(1 << 0);
+	TC72_ManageData();
+	CallPollingFunction();
+}
+
+void TIM3_IRQHandler(void)
+{
+	TIM3->SR &= ~(1 << TIM_SR_CC1IF_Pos);
 	TC72_ManageData();
 	CallPollingFunction();
 }

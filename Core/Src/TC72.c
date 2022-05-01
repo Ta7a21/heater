@@ -3,13 +3,13 @@
 #include "SPI.h"
 #include "utils.h"
 
-static float64_type temperature;
+static float32_type temperature;
 
-float64_type TC72_GetTemperature(void) { return temperature; }
+float32_type TC72_GetTemperature(void) { return temperature; }
 
 void TC72_ManageData(void)
 {
-    uint8_type data = 0;
+    char_type data = 0;
     temperature = 0.0;
     TC72_Select();
     TC72_RegisterRead(0x01, &data);
@@ -42,13 +42,13 @@ void TC72_Select(void) { DIO_ChannelWrite(2, 1); }
 
 void TC72_Unselect(void) { DIO_ChannelWrite(2, 0); }
 
-void TC72_RegisterWrite(uint8_type RegAdd, uint8_type Data)
+void TC72_RegisterWrite(char_type RegAdd, char_type Data)
 {
     SPI_TransmitRecieveByte(RegAdd | (1 << 7));
     SPI_TransmitRecieveByte(Data);
 }
 
-void TC72_RegisterRead(uint8_type RegAdd, uint8_type *DataPtr)
+void TC72_RegisterRead(char_type RegAdd, char_type *DataPtr)
 {
     SPI_TransmitRecieveByte(RegAdd & (~(1 << 7)));
     *DataPtr = SPI_TransmitRecieveByte(0x00);

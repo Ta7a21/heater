@@ -3,8 +3,7 @@
 
 #include <utils.h>
 
-float64_type Control_Temperature(float64_type Current_Temperature,
-								 float64_type Requested_Temperature);
-void StartHeater(void);
+void Control_Temperature(float32_type Current_Temperature,
+		float32_type Requested_Temperature);
 
 #endif /* INC_AC_CONTROLLER_H_ */

@@ -4,7 +4,7 @@
 
 void SPI_EnableClock() { RCC->APB2ENR |= RCC_APB2ENR_SPI1EN; }
 
-void SPI_Init(uint8_type MasterSlave, uint8_type ClkPol, uint8_type ClkPhase)
+void SPI_Init(char_type MasterSlave, char_type ClkPol, char_type ClkPhase)
 {
 	SPI_EnableClock();
 
@@ -25,7 +25,7 @@ void SPI_Init(uint8_type MasterSlave, uint8_type ClkPol, uint8_type ClkPhase)
 	SPI1->CR1 |= (1 << SPI_CR1_SPE_Pos);
 }
 
-uint8_type SPI_TransmitRecieveByte(uint8_type TxData)
+char_type SPI_TransmitRecieveByte(char_type TxData)
 {
 	if (SPI1->SR & (1 << SPI_SR_TXE_Pos))
 	{

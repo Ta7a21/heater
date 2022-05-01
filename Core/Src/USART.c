@@ -1,10 +1,11 @@
 #include "USART.h"
+#include "utils.h"
 #include "stm32f4xx.h"
 
 void USART_EnableClock() { RCC->APB1ENR |= (0x01 << 17); }
 
-void USART_Init(unsigned char Mode, unsigned char Stop,
-                unsigned char WordLength, unsigned char Oversampling)
+void USART_Init(char_type Mode, char_type Stop,
+                char_type WordLength, char_type Oversampling)
 {
     USART_EnableClock();
     // Enable USART
@@ -21,7 +22,7 @@ void USART_Init(unsigned char Mode, unsigned char Stop,
     USART2->CR2 |= (Stop << 12);
 }
 
-void USART_Transmit(const char *str)
+void USART_Transmit(const char_type *str)
 {
     while (*str != '\0')
     {

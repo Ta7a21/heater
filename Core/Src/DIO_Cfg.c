@@ -12,5 +12,5 @@ const DIO_ChannelConfigType DIO_ConfigParam[DIO_NUM_OF_CHANNELS] = {
 	{/*TC72_SDO*/
 	 0, 7, 2, 0, 0, 5},
 	{/*Heater*/
-	 1, 4, 1, 0, 0, 0}
+	 1, 4, 2, 0, 0, 2}
 };

@@ -15,7 +15,7 @@ typedef double float64_type;
 typedef long double float128_type;
 
 char_type *convertFloatToString(float32_type num);
-char_type *convertIntegerToString(uint32_type num);
-char_type *floatToStr(float64_type val);
+char_type *convertIntegerToString(uint16_type num);
+char_type *floatToStr(float32_type val);
 
 #endif /* INC_HELPER_H_ */

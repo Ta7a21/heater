@@ -2,7 +2,7 @@
 #include "poller.h"
 #include "stm32f4xx.h"
 
-uint32_type auto_reload_value = 100;
+uint32_type poller_auto_reload = 100;
 
 void StartTimer(void)
 {
@@ -10,7 +10,7 @@ void StartTimer(void)
 	RCC->APB1ENR |= (1u << 0);
 
 	TIM2->PSC = 15999;
-	TIM2->ARR = auto_reload_value;
+	TIM2->ARR = poller_auto_reload;
 
 	/*clear timer counter*/
 	TIM2->CNT = 0;
