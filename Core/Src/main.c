@@ -40,6 +40,4 @@ void TIM2_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
 	TIM3->SR &= ~(1 << TIM_SR_CC1IF_Pos);
-	TC72_ManageData();
-	CallPollingFunction();
 }
